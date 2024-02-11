@@ -26,6 +26,7 @@ public class PlayerLook : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * sens * Time.deltaTime;
         // Vector3.up is just fancy for (0,1,0), so we are rotating on the Y Axis or left and right by mouseX
         playerTransform.Rotate(Vector3.up, mouseX);
+        playerTransform.rotation = Quaternion.Euler(0f, playerTransform.rotation.eulerAngles.y, 0f);
         // Subtracts the mouse vertical movement from the xRotation or the player (I have no idea why it's not add but I'm too lazy to figure it out)
         xRotation -= mouseY;
         // Clamps xRotation so you can't look look backwards by looking down (Clamp means that if the first argument is less than the second, it sets the first to the second, and if the first argument is greater than the third, it sets it to the third)
